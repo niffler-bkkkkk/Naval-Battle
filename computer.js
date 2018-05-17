@@ -207,12 +207,26 @@ Computer.prototype = {
         }
         return existBoat
     },
-    getFastMethod: function (grids) {//取10000次攻击中最快的一种
-        for (let i = 0; i < 10000; i++) {
-            this.points=[];
+    getFastMethod: function (grids) { //取10次攻击中最快的一种
+        var currentsGrids=this.constructArray([], 8, 8);
+        for(let i=0;i<8;i++){
+            for(let j=0;j<8;j++){
+                currentsGrids[i][j]=grids[i][j];
+            }
+        }
+        for (let i = 0; i < 10; i++) {
+            this.points = [];
+            for(let i=0;i<8;i++){
+                for(let j=0;j<8;j++){
+                    grids[i][j]=currentsGrids[i][j];
+                }
+            }
             this.attackBoats(grids);
-            if (this.pointsMin.length > this.points.length&&this.points.length) {
-                this.pointsMin = this.points;
+            if (this.pointsMin.length > this.points.length && this.points.length) {
+                this.pointsMin=[];
+                for(let i=0;i<this.points.length;i++){
+                    this.pointsMin.push(this.points[i]);
+                }
             }
         }
     }

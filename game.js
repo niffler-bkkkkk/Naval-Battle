@@ -440,6 +440,7 @@ function startGame() {
     computer.placeShip();
     computerGrids = computer.grids;
     computer.getFastMethod(grids);
+    
     pointsMin = computer.pointsMin;
     maxCounts = pointsMin.length;
 }
@@ -460,7 +461,6 @@ function endGame(endGame) {
         }
         location.reload();
     } else {
-        console.log(computerGrids);
         for (let i = 0; i < 8; i++) {
             for (j = 0; j < 8; j++) {
                 if (computerGrids[i][j] === 5) {
